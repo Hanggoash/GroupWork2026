@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="朝阳区亮马河国际风情水岸生态文明建设专题网站 - 展示亮马河生态治理、滨水空间建设、问题发现与改进建议">
+  <title>生态文明建设 - 朝阳区亮马河国际风情水岸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="nav-logo">
+      <span class="logo-icon">&#x1f33f;</span>
+      <span>亮马河国际风情水岸</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#about">关于项目</a></li>
+      <li><a href="#interviews">市民声音</a></li>
+      <li><a href="#ecology">生态环境</a></li>
+      <li><a href="#achievements">建设成果</a></li>
+      <li><a href="#issues">问题与建议</a></li>
+      <li><a href="#future">未来展望</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="search-btn" id="searchBtn" aria-label="搜索">&#x1f50d;</button>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== SEARCH MODAL ===== -->
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-content">
+    <input type="text" id="searchInput" placeholder="搜索网站内容...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="hero-slider">
+    <div class="hero-text">
+      <span class="hero-badge">生态文明建设</span>
+      <h1 class="hero-title">
+        朝阳区<br><span class="highlight">亮马河国际风情水岸</span>
+      </h1>
+      <p class="hero-desc">
+        以水为媒，文旅融合。亮马河从单一城市河道转变为集生态、景观、休闲于一体的国际滨水空间，践行"绿水青山就是金山银山"理念。
+      </p>
+      <div class="hero-btns">
+        <a href="#about" class="btn btn-primary">了解项目 &#x2192;</a>
+        <a href="#achievements" class="btn btn-outline">查看成果</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="slide active">
+          <img src="images/scenery/IMG_20260604_154757.jpg" alt="亮马河滨水生态景观—岸边绿化与河道" loading="eager" width="600" height="450">
+        </div>
+        <div class="slide">
+          <img src="images/scenery/IMG_20260604_154814.jpg" alt="亮马河河水近景—清澈水面与绿植倒影" loading="lazy" width="600" height="450">
+        </div>
+        <div class="slide">
+          <img src="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="亮马河水岸景观—步道与水体融合" loading="lazy" width="600" height="450">
+        </div>
+        <div class="slide">
+          <img src="images/before-after/new1.jpg" alt="亮马河治理后新貌—开阔整洁的滨水空间" loading="lazy" width="600" height="450">
+        </div>
+        <div class="slide">
+          <img src="images/before-after/new2.jpg" alt="亮马河治理后新貌—滨水步道与绿化" loading="lazy" width="600" height="450">
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots">
+        <button class="active" data-index="0"></button>
+        <button data-index="1"></button>
+        <button data-index="2"></button>
+        <button data-index="3"></button>
+        <button data-index="4"></button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number" data-count="5.8">0</div>
+      <div class="stat-label">河道治理长度（公里）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-count="80">0</div>
+      <div class="stat-label">绿化覆盖率（%）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-count="12">0</div>
+      <div class="stat-label">滨水公共空间（处）</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-count="35">0</div>
+      <div class="stat-label">植物种类（种以上）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW SECTION ===== -->
+<section class="section" id="overview">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">项目概览</span>
+      <h2 class="section-title">亮马河生态文明建设核心板块</h2>
+      <p class="section-subtitle">从水质改善到生态修复，从公共空间建设到现场问题记录，亮马河全方位呈现生态文明建设实践</p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card" onclick="document.getElementById('ecology').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">&#x1f4a7;</div>
+        <h3>生态环境治理</h3>
+        <p>河道水质清澈，水面洁净，岸边绿化连续丰富。从"水清、岸绿、景美、可亲近"四方面达到市民亲水游憩标准。</p>
+      </div>
+      <div class="overview-card" onclick="document.getElementById('achievements').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">&#x1f3d7;</div>
+        <h3>公共设施建设</h3>
+        <p>滨水步道连续宽阔，亲水平台丰富多样，公共服务设施完善。AED急救站、无障碍设施等一应俱全。</p>
+      </div>
+      <div class="overview-card" onclick="document.getElementById('issues').scrollIntoView({behavior:'smooth'})">
+        <div class="card-icon">&#x1f50d;</div>
+        <h3>问题发现与改进建议</h3>
+        <p>现场观察记录便民服务、安全隐患、无障碍设施、环卫保洁和公共服务等方面存在的问题，提出切实可行的改进建议。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="section about-section" id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">关于项目</span>
+      <h2 class="section-title">亮马河国际风情水岸项目</h2>
+      <p class="section-subtitle">从城市背面向城市前厅的华丽转身</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <img src="images/scenery/IMG_20260604_154757.jpg" alt="亮马河滨水生态景观" loading="lazy" width="600" height="450">
+        <div class="about-image-badge">&#x1f4f8; 亮马河滨水生态实景</div>
+      </div>
+      <div class="about-text">
+        <h3>项目背景与目标</h3>
+        <p>亮马河位于北京市朝阳区，是连接城市中心与东部区域的重要水系。经过系统性的生态治理与滨水空间建设，亮马河已从过去单一的城市排水河道，转变为集生态、景观、休闲、文化、商业于一体的国际风情水岸。</p>
+        <p>项目秉持"人与自然和谐共生"的生态文明理念，以"人民城市人民建，人民城市为人民"为指导，将河道治理、岸线绿化、公共空间营造和文化旅游商业融合发展有机结合。</p>
+        <p>亮马河国际风情水岸不仅改善了区域生态环境质量，更成为展示北京生态文明建设成果的重要窗口和市民共享的城市客厅。</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="feat-icon">&#x2705;</div>
+            <div class="feat-text">
+              <h4>水清</h4>
+              <p>水质清澈透明，达到亲水标准</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feat-icon">&#x1f331;</div>
+            <div class="feat-text">
+              <h4>岸绿</h4>
+              <p>两岸绿化连续丰富，生态驳岸</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feat-icon">&#x1f304;</div>
+            <div class="feat-text">
+              <h4>景美</h4>
+              <p>水体与城市建筑协调统一</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feat-icon">&#x1f91d;</div>
+            <div class="feat-text">
+              <h4>可亲近</h4>
+              <p>市民可进入、可停留、可享受</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTERVIEWS SECTION ===== -->
+<section class="section interviews-section" id="interviews">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">市民声音</span>
+      <h2 class="section-title">亮马河使用者的真实反馈</h2>
+      <p class="section-subtitle">深入一线采访周边居民与工作人员，倾听不同群体对亮马河治理的真实感受与建议</p>
+    </div>
+
+    <!-- Interview 1 -->
+    <div class="interview-card">
+      <div class="interview-image">
+        <img src="images/interviews/1.jpg" alt="采访一：附近青年居民" loading="lazy">
+        <span class="interview-label">采访一</span>
+      </div>
+      <div class="interview-body">
+        <div class="interview-header">
+          <h3>附近青年居民</h3>
+          <span class="interview-role">刚毕业青年 · 正在求职</span>
+        </div>
+        <div class="interview-quote">
+          <p>"对我来说更像一个休闲放松的地方。离家近，环境也还不错，走一走心情会好一点。沿着河边走比较舒服，环境比普通街道好一些，也不用花钱，想来的时候就可以来。"</p>
+        </div>
+        <div class="interview-insight">
+          <h4>&#x1f4a1; 调研发现</h4>
+          <p>亮马河的生态环境改善不仅服务于游客，也真实进入了附近居民的日常生活。尤其对于青年群体，良好的滨水空间能提供情绪调节和休闲放松的功能，体现了生态文明建设对城市生活品质和群众精神感受的提升。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview 2 -->
+    <div class="interview-card reverse">
+      <div class="interview-image">
+        <img src="images/interviews/2.jpg" alt="采访二：附近居住40年的老大爷" loading="lazy">
+        <span class="interview-label">采访二</span>
+      </div>
+      <div class="interview-body">
+        <div class="interview-header">
+          <h3>附近居住40年的老大爷</h3>
+          <span class="interview-role">长期居民 · 居住四十余年</span>
+        </div>
+        <div class="interview-quote">
+          <p>"变化挺大的，越来越好了。以前哪有现在这样，现在河边修得好多了，环境也好多了。现在看着整齐了，走路也方便了，大家也愿意出来转转了。"</p>
+        </div>
+        <div class="interview-highlight">
+          <strong>&#x26a0; 反馈问题：</strong>公共厕所太少，附近只有一个，数量不够。居民认为环境变好了，但公共服务设施需要跟上。
+        </div>
+        <div class="interview-insight">
+          <h4>&#x1f4a1; 调研发现</h4>
+          <p>长期居民见证了亮马河从"小河沟"到如今开阔整洁的完整变迁。环境改善得到普遍认可，但随着空间品质提升和人流增加，公共厕所等基础服务设施尚未完全跟上。生态文明建设不仅要"环境美"，也要"使用方便"和"服务完善"。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview 3 -->
+    <div class="interview-card">
+      <div class="interview-image">
+        <img src="images/interviews/3.jpg" alt="采访三：附近居住60年的老大妈" loading="lazy">
+        <span class="interview-label">采访三</span>
+      </div>
+      <div class="interview-body">
+        <div class="interview-header">
+          <h3>附近居住60年的老大妈</h3>
+          <span class="interview-role">长期居民 · 居住六十年</span>
+        </div>
+        <div class="interview-quote">
+          <p>"变化太大了。以前就是个小河沟，现在扩成大河了，看着也漂亮多了。"</p>
+        </div>
+        <div class="interview-highlight">
+          <strong>&#x26a0; 反馈问题：</strong>同样提到公共厕所不足的问题，认为人流增加后厕所数量和位置便利性仍然不够。与第二位受访者形成呼应，说明厕所问题具有普遍性。
+        </div>
+        <div class="interview-insight">
+          <h4>&#x1f4a1; 调研发现</h4>
+          <p>居住六十年的老人对亮马河历史变化感受最为直观，"小河沟变大河"的朴素描述道出了治理成果的实质。老年居民日常使用中，厕所、座椅、导览等设施是否方便，直接影响他们对公共空间的实际体验。公共服务设施完善是提升全民获得感的关键。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview 4 -->
+    <div class="interview-card reverse">
+      <div class="interview-image">
+        <img src="images/interviews/4.jpg" alt="采访四：现场工作人员大叔" loading="lazy">
+        <span class="interview-label">采访四</span>
+      </div>
+      <div class="interview-body">
+        <div class="interview-header">
+          <h3>现场工作人员</h3>
+          <span class="interview-role">一线工作者 · 日常观察视角</span>
+        </div>
+        <div class="interview-quote">
+          <p>"还挺多的，尤其是周末、天气好的时候，人更多。游客最常问的问题就是厕所在哪，每天至少十个人来问。"</p>
+        </div>
+        <div class="interview-highlight">
+          <strong>&#x1f4ca; 关键数据：</strong>每天至少10位游客询问公共厕所位置，从工作人员角度印证了厕所不足和导览标识不清晰的问题具有普遍性。
+        </div>
+        <div class="interview-insight">
+          <h4>&#x1f4a1; 调研发现</h4>
+          <p>一线工作人员的日常观察提供了不同于居民感受的宝贵视角。亮马河环境改善后吸引了更多人流，也让公共服务需求更加突出。随着亮马河从单一河道空间转变为综合性滨水公共空间，厕所、指示牌、人流引导等基础服务设施需要进一步优化。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview 5 -->
+    <div class="interview-card">
+      <div class="interview-image">
+        <img src="images/interviews/5.jpg" alt="采访五：划船青年教练" loading="lazy">
+        <span class="interview-label">采访五</span>
+      </div>
+      <div class="interview-body">
+        <div class="interview-header">
+          <h3>划船青年教练</h3>
+          <span class="interview-role">水上项目从业者 · 游客服务视角</span>
+        </div>
+        <div class="interview-quote">
+          <p>"这里不只是能看河，还能参与进去。比如划船、坐船，游客能直接体验水岸空间，不只是从旁边走过去。环境好了，人自然愿意停留久一点。"</p>
+        </div>
+        <div class="interview-highlight">
+          <strong>&#x1f3af; 核心观点：</strong>亮马河的独特价值在于从"能看"到"能体验"的转变，划船、游船等活动增强了人与水岸空间的互动。
+        </div>
+        <div class="interview-insight">
+          <h4>&#x1f4a1; 调研发现</h4>
+          <p>水上项目从业者的观察表明，亮马河生态治理不仅改善了水岸环境，也推动了亲水活动和滨水休闲的发展。使用群体多元（年轻人、情侣、亲子家庭），说明亮马河已成为全龄友好的城市公共空间。生态优势正有效转化为可体验、可消费、可停留的都市生活方式。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="interview-summary">
+      <h3>采访总结</h3>
+      <p>五位受访者涵盖青年、长期居民、一线工作人员和水上项目从业者等不同群体，反映了亮马河治理在改善生态环境、拓展滨水空间方面成效显著，居民普遍认可"环境越来越好"的变化。但公共厕所不足、导览标识不清晰等公共服务短板仍需完善。生态文明建设不仅要实现"环境美"，更要让每一位使用者感受到"方便"和"温度"。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ECOLOGY SECTION ===== -->
+<section class="section" id="ecology">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">生态环境</span>
+      <h2 class="section-title">生态治理与环境保护</h2>
+      <p class="section-subtitle">水环境改善是生态文明建设的基础，亮马河在河道治理、绿化建设和生态修复方面取得显著成效</p>
+    </div>
+
+    <div class="ecology-tabs" id="ecologyTabs">
+      <button class="ecology-tab active" data-tab="water">水质改善</button>
+      <button class="ecology-tab" data-tab="green">绿化建设</button>
+      <button class="ecology-tab" data-tab="eco">生态修复</button>
+      <button class="ecology-tab" data-tab="bio">生物多样性</button>
+    </div>
+
+    <!-- Water Quality -->
+    <div class="ecology-content active" id="tab-water">
+      <div class="ecology-grid">
+        <div class="ecology-image">
+          <img src="images/scenery/IMG_20260604_154814.jpg" alt="亮马河河水近景 — 水面清洁，水质清澈" loading="lazy" onclick="openLightbox(this.src, '亮马河河水近景 — 水面清洁，水质清澈')">
+        </div>
+        <div class="ecology-info">
+          <h3>河道水质与水面环境</h3>
+          <p>亮马河经过系统性生态治理后，河水清澈透明，水面洁净无漂浮垃圾，河岸整洁无明显异味来源。从"水清、岸绿、景美、可亲近"四个方面综合评估，亮马河水环境已达到市民亲水游憩的高标准。</p>
+          <p>河道不再是城市的"背面"，而是市民生活的"前厅"。水体、绿化、步道与城市建筑形成了协调统一的整体景观，体现了"人与自然和谐共生"的生态文明理念。</p>
+          <p>水岸过渡自然，岸缘植物与水面形成生态驳岸效果，为市民亲近水面提供了良好条件。游船、皮划艇等水上活动的开展，也从侧面印证了水质已满足接触性休闲活动的标准。</p>
+          <div class="ecology-metrics">
+            <div class="ecology-metric">
+              <div class="metric-value">清澈</div>
+              <div class="metric-label">水体透明度</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">无漂浮物</div>
+              <div class="metric-label">水面洁净度</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">无异味</div>
+              <div class="metric-label">空气质量</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">可亲近</div>
+              <div class="metric-label">亲水可达性</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Greening -->
+    <div class="ecology-content" id="tab-green">
+      <div class="ecology-grid">
+        <div class="ecology-image">
+          <img src="images/scenery/IMG_20260604_154757.jpg" alt="亮马河岸边连续绿化带 — 草坪、灌木、树木多层次绿化" loading="lazy" onclick="openLightbox(this.src, '亮马河岸边连续绿化带 — 草坪、灌木、树木多层次绿化')">
+        </div>
+        <div class="ecology-info">
+          <h3>岸边绿化与景观提升</h3>
+          <p>亮马河两岸形成了草坪、灌木、树木等多层次绿化体系。绿化带连续完整，植物种类超过35种，无裸露土地，绿化维护状况良好。两岸绿化提升了城市空间品质，让市民在河边散步、休闲时能感受到良好的生态环境。</p>
+          <p>河岸植物与水面相互映衬，形成了自然的生态过渡带。绿化与步道、休憩设施紧密结合，市民在绿化空间附近散步、休憩，体现了生态空间向生活空间的有效转化 — 绿化不仅是"看的"，更是"用的"。</p>
+          <p>花卉、树木和景观小品的搭配丰富了河岸的视觉层次，生态治理不仅改善了水质和岸线，也提升了沿岸景观的精致度和可观赏性，使亮马河成为城市中的绿色走廊。</p>
+          <div class="ecology-metrics">
+            <div class="ecology-metric">
+              <div class="metric-value">连续完整</div>
+              <div class="metric-label">绿化连续性</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">35+种</div>
+              <div class="metric-label">植物种类</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">多层次</div>
+              <div class="metric-label">绿化体系</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">良好</div>
+              <div class="metric-label">维护状况</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ecological Restoration -->
+    <div class="ecology-content" id="tab-eco">
+      <div class="ecology-grid">
+        <div class="ecology-image">
+          <img src="images/waterside/IMG_20260604_152009.jpg" alt="滨水步道与生态驳岸 — 河道从排水功能向复合生态空间转变" loading="lazy" onclick="openLightbox(this.src, '滨水步道与生态驳岸 — 河道从排水功能向复合生态空间转变')">
+        </div>
+        <div class="ecology-info">
+          <h3>生态修复与空间再造</h3>
+          <p>亮马河治理超越了简单的"清理河道"范畴，是一次系统性的生态修复与空间再造工程。从纵向角度观察，水体、绿化、建筑层次分明，体现了城市河道从单一排水功能向复合生态空间的深刻转变。</p>
+          <p>岸线开放程度显著提升，桥下空间更加通透宜人，丰富了河道的视觉层次。生态驳岸建设使岸缘植物与水面形成自然衔接，不仅提升了景观效果，也为城市中的小动物提供了栖息空间。</p>
+          <p>滨水步道连续宽敞，与桥梁、码头、商业区形成有机连接。河道空间真正向市民开放，使生态治理成果转化为人民群众日常可感、可用、可享受的公共空间，是"人民城市为人民"理念的生动实践。</p>
+          <div class="ecology-metrics">
+            <div class="ecology-metric">
+              <div class="metric-value">5.8公里</div>
+              <div class="metric-label">治理河道长度</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">开放共享</div>
+              <div class="metric-label">岸线开放度</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">生态驳岸</div>
+              <div class="metric-label">修复方式</div>
+            </div>
+            <div class="ecology-metric">
+              <div class="metric-value">全龄友好</div>
+              <div class="metric-label">空间包容性</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biodiversity -->
+    <div class="ecology-content" id="tab-bio">
+      <div class="ecology-grid">
+        <div class="ecology-image">
+          <img src="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="岸缘芦苇与柳树 — 水生动植物栖息空间" loading="lazy" onclick="openLightbox(this.src, '岸缘芦苇与柳树密布 — 水生动植物栖息空间')">
+        </div>
+        <div class="ecology-info">
+          <h3>生物多样性保护</h3>
+          <p>亮马河生态治理在生物多样性方面取得了积极成效。植被的多样性丰富了河岸景观，多层次、多类型的植物群落为城市中的鸟类、鱼类、昆虫等小动物提供了栖息和繁衍的空间。</p>
+          <p>岸缘芦苇、柳树等自然植被与水面形成生态过渡带，营造了接近自然的驳岸环境。绿化带不仅是景观装饰，更是城市生态系统的重要组成部分，维护着城市微生态的平衡与健康。</p>
+          <p>生态治理使亮马河具备了支撑更丰富生物多样性的条件。水面上的游船与自然生态和谐共存，人与动植物在同一空间中友好相处，生动诠释了城市生态文明建设中"人与自然和谐共生"的核心目标。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS SECTION ===== -->
+<section class="section achievements-section" id="achievements">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">建设成果</span>
+      <h2 class="section-title">亮马河治理前后对比与建设成果</h2>
+      <p class="section-subtitle">通过同机位今昔对比和分区域建设成果展示，直观呈现亮马河的华丽蜕变</p>
+    </div>
+
+    <!-- Before/After -->
+    <h3 style="text-align:center;font-family:var(--font-heading);margin-bottom:32px;color:var(--color-primary-dark);">&#x1f4f8; 同机位今昔对比</h3>
+    <div class="before-after-container">
+      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+        <img src="images/before-after/old1.jpg" alt="治理前亮马河旧貌1" loading="lazy">
+        <div class="ba-overlay">
+          <span class="ba-label before">治理前</span>
+          <div class="ba-title">亮马河历史旧貌之一</div>
+        </div>
+      </div>
+      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+        <img src="images/before-after/new1.jpg" alt="治理后亮马河新貌1" loading="lazy">
+        <div class="ba-overlay">
+          <span class="ba-label after">治理后</span>
+          <div class="ba-title">同机位 — 生态治理新面貌</div>
+        </div>
+      </div>
+      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+        <img src="images/before-after/old2.jpg" alt="治理前亮马河旧貌2" loading="lazy">
+        <div class="ba-overlay">
+          <span class="ba-label before">治理前</span>
+          <div class="ba-title">亮马河历史旧貌之二</div>
+        </div>
+      </div>
+      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+        <img src="images/before-after/new2.jpg" alt="治理后亮马河新貌2" loading="lazy">
+        <div class="ba-overlay">
+          <span class="ba-label after">治理后</span>
+          <div class="ba-title">同机位 — 滨水空间焕新</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <h3 style="text-align:center;font-family:var(--font-heading);margin-bottom:24px;color:var(--color-primary-dark);">&#x1f3de; 建设成果画廊</h3>
+    <div class="gallery-filter" id="galleryFilter">
+      <button class="gallery-filter-btn active" data-filter="all">全部</button>
+      <button class="gallery-filter-btn" data-filter="waterside">滨水步道</button>
+      <button class="gallery-filter-btn" data-filter="facility">公共设施</button>
+      <button class="gallery-filter-btn" data-filter="safety">安全保障</button>
+      <button class="gallery-filter-btn" data-filter="hazard">安全隐患</button>
+      <button class="gallery-filter-btn" data-filter="accessibility">无障碍设施</button>
+      <button class="gallery-filter-btn" data-filter="sanitation">环卫工作</button>
+      <button class="gallery-filter-btn" data-filter="scenery">生态景观</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-category="waterside">
+        <img src="images/waterside/IMG_20260604_152009.jpg" alt="滨水步道" loading="lazy" data-full="images/waterside/IMG_20260604_152009.jpg">
+        <div class="gallery-caption">滨水步道 — 连续宽敞的慢行空间</div>
+      </div>
+      <div class="gallery-item" data-category="waterside">
+        <img src="images/waterside/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="亲水步道" loading="lazy" data-full="images/waterside/c86cec60-775c-4087-a5c5-2e1668533b86.jpg">
+        <div class="gallery-caption">亲水步道 — 人与自然的亲密接触</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_151950.jpg" alt="公共座椅设施" loading="lazy" data-full="images/facilities/IMG_20260604_151950.jpg">
+        <div class="gallery-caption">公共服务设施 — 市民休憩空间</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_155332.jpg" alt="指示牌与标识系统" loading="lazy" data-full="images/facilities/IMG_20260604_155332.jpg">
+        <div class="gallery-caption">标识导览系统 — 国际风情水岸导视</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_144719.jpg" alt="安全设施" loading="lazy" data-full="images/safety/IMG_20260604_144719.jpg">
+        <div class="gallery-caption">安全设施 — AED急救站与急救指引</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_150226.jpg" alt="安全提示与救生设施" loading="lazy" data-full="images/safety/IMG_20260604_150226.jpg">
+        <div class="gallery-caption">救生设施 — 滨水空间安全管理</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/scenery/IMG_20260604_154814.jpg" alt="亮马河景观" loading="lazy" data-full="images/scenery/IMG_20260604_154814.jpg">
+        <div class="gallery-caption">河道景观 — 水清岸绿景美</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="水岸景观" loading="lazy" data-full="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg">
+        <div class="gallery-caption">水岸景观 — 生态与景观融合</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_144729.jpg" alt="垃圾处理设施" loading="lazy" data-full="images/facilities/IMG_20260604_144729.jpg">
+        <div class="gallery-caption">环卫设施 — 保持滨水空间清洁</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/general/IMG_20260604_144154.jpg" alt="亮马河桥梁景观" loading="lazy" data-full="images/general/IMG_20260604_144154.jpg">
+        <div class="gallery-caption">桥梁景观 — 交通与景观的融合</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_145545.jpg" alt="安全防护设施" loading="lazy" data-full="images/safety/IMG_20260604_145545.jpg">
+        <div class="gallery-caption">安全防护 — 沿河护栏与警示</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/893d1a5a-107c-49bf-8001-80be85fd7d25.jpg" alt="公共服务设施" loading="lazy" data-full="images/facilities/893d1a5a-107c-49bf-8001-80be85fd7d25.jpg">
+        <div class="gallery-caption">综合服务设施 — 人性化公共空间</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_144418.jpg" alt="安全隐患—亲水区域" loading="lazy" data-full="images/hazards/IMG_20260604_144418.jpg">
+        <div class="gallery-caption">安全隐患 — 垂钓者与游泳者同域活动风险</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_145854.jpg" alt="安全隐患—河道安全" loading="lazy" data-full="images/hazards/IMG_20260604_145854.jpg">
+        <div class="gallery-caption">安全隐患 — 滨水区域安全风险点</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_153116.jpg" alt="安全隐患—安全提醒" loading="lazy" data-full="images/hazards/IMG_20260604_153116.jpg">
+        <div class="gallery-caption">安全隐患 — 需加强警示与巡查区域</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/6bee9304-7bec-4519-8cec-eddd19a7fdcb.jpg" alt="无障碍设施" loading="lazy" data-full="images/accessibility/6bee9304-7bec-4519-8cec-eddd19a7fdcb.jpg">
+        <div class="gallery-caption">无障碍设施 — 坡道与通行入口</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/IMG_20260604_150457.jpg" alt="无障碍坡道" loading="lazy" data-full="images/accessibility/IMG_20260604_150457.jpg">
+        <div class="gallery-caption">无障碍设施 — 亲水步道坡道现状</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/IMG_20260604_152036.jpg" alt="无障碍通行" loading="lazy" data-full="images/accessibility/IMG_20260604_152036.jpg">
+        <div class="gallery-caption">无障碍设施 — 轮椅与婴儿车通行路线</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/76065786-af2a-4c60-883e-49c5294d1c42.jpg" alt="环卫工作" loading="lazy" data-full="images/sanitation/76065786-af2a-4c60-883e-49c5294d1c42.jpg">
+        <div class="gallery-caption">环卫工作 — 河道清洁与垃圾分类</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_144729.jpg" alt="环卫设施" loading="lazy" data-full="images/sanitation/IMG_20260604_144729.jpg">
+        <div class="gallery-caption">环卫工作 — 沿线环卫设施配置</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_145209.jpg" alt="清洁维护" loading="lazy" data-full="images/sanitation/IMG_20260604_145209.jpg">
+        <div class="gallery-caption">环卫工作 — 步道与公共区域清洁</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_153834.jpg" alt="垃圾处理" loading="lazy" data-full="images/sanitation/IMG_20260604_153834.jpg">
+        <div class="gallery-caption">环卫工作 — 垃圾桶设置与维护</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_154139.jpg" alt="环卫清洁" loading="lazy" data-full="images/sanitation/IMG_20260604_154139.jpg">
+        <div class="gallery-caption">环卫工作 — 日常保洁作业</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_155937.jpg" alt="环境维护" loading="lazy" data-full="images/sanitation/IMG_20260604_155937.jpg">
+        <div class="gallery-caption">环卫工作 — 滨水空间环境维护</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/pricing/1f3a20b2-8ebf-4f18-a389-f907e43ce4e0.jpg" alt="商品价格" loading="lazy" data-full="images/pricing/1f3a20b2-8ebf-4f18-a389-f907e43ce4e0.jpg">
+        <div class="gallery-caption">便民服务 — 自动售卖机商品价格公示</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/pricing/IMG_20260604_144701.jpg" alt="商品价格" loading="lazy" data-full="images/pricing/IMG_20260604_144701.jpg">
+        <div class="gallery-caption">便民服务 — 矿泉水售价5元/瓶，价格偏高</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ISSUES SECTION ===== -->
+<section class="section issues-section" id="issues">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">问题与建议</span>
+      <h2 class="section-title">现场观察发现的问题与改进建议</h2>
+      <p class="section-subtitle">在肯定建设成效的同时，客观记录现场发现的问题，为持续优化提供参考</p>
+    </div>
+
+    <div class="issues-grid">
+      <div class="issue-card">
+        <div class="issue-icon">&#x1f4b0;</div>
+        <h3>便民服务：售卖机价格偏高</h3>
+        <p>自动售卖机矿泉水售价5元/瓶，对日常使用者来说价格偏高。建议增加平价饮水服务，完善价格公示，让便民设施真正惠民。</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-icon">&#x26a0;&#xfe0f;</div>
+        <h3>安全隐患：水域混用与救生值守不足</h3>
+        <p>垂钓者和游泳者在同一片水域活动，存在鱼钩鱼线伤人等安全风险。河岸缺少明显救生员值守。建议明确划分活动区域，增设安全提示与救生设施，在重点时段安排巡逻值守。</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-icon">&#x1f4cb;</div>
+        <h3>生态宣传：治理历程展示不足</h3>
+        <p>沿线景观、步道和商业设施完善，但生态文明主题宣传展板不明显。游客感受环境优美，却不了解治理背后的生态修复过程。建议增设生态展板和二维码科普，使水岸兼具游览与教育功能。</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-icon">&#x267f;</div>
+        <h3>无障碍设施：坡道与连续性不足</h3>
+        <p>部分亲水步道无障碍坡道坡度过大，路线不够连续，甚至缺少无障碍设施。轮椅使用者、老人、婴儿车通行不便。建议全面排查并优化坡道坡度，完善连续通行路线。</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-icon">&#x1f9f9;</div>
+        <h3>环卫保洁：维护需常态化</h3>
+        <p>垃圾桶、灭火器箱、指示牌等设施长期暴露户外。虽然沿线已设置垃圾分类和环卫设施，但随着人流增加需建立定期巡查、清洁和更新机制，保持滨水空间整洁与城市形象。</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-icon">&#x1f6d1;</div>
+        <h3>公共厕所：数量不足，导引不清晰</h3>
+        <p>多位受访者和一线工作人员反映公共厕所数量不足且指示牌不够明显。工作人员每天至少被询问10次厕所位置。建议增加公厕数量并优化导引标识系统。</p>
+      </div>
+    </div>
+
+    <div class="issues-summary">
+      <h3>总结</h3>
+      <p>亮马河生态水岸在河道治理、滨水空间开放和城市景观提升方面成效显著。但从现场观察和市民反馈来看，便民服务、安全保障、生态宣传、活动管理和无障碍设施等方面仍有精细化提升空间。这些问题虽不影响整体建设成效，但会影响市民和游客的实际体验。后续应更加重视精细化管理和公众需求，让生态治理成果更好地服务人民生活，真正体现"良好生态环境是最普惠的民生福祉"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUTURE SECTION ===== -->
+<section class="section future-section" id="future">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">未来展望</span>
+      <h2 class="section-title">持续优化与未来规划</h2>
+      <p class="section-subtitle">在现有成果基础上，进一步提升亮马河国际风情水岸的品质与服务</p>
+    </div>
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="future-num">01</div>
+        <h3>客流疏导与管理优化</h3>
+        <p>关注高峰时段步道与码头客流疏导，优化人流动线设计。在保证开放共享的前提下，合理配置空间资源，提升高峰期市民游客的体验品质，确保滨水空间的安全有序运行。</p>
+      </div>
+      <div class="future-card">
+        <div class="future-num">02</div>
+        <h3>生态科普与宣传教育</h3>
+        <p>加强生态治理历程科普标识建设，增设生态宣传展板，向公众展示亮马河治理的技术路径和生态价值。通过科普教育增强市民的生态文明意识，使亮马河成为户外生态教育课堂。</p>
+      </div>
+      <div class="future-card">
+        <div class="future-num">03</div>
+        <h3>商业与生态平衡发展</h3>
+        <p>平衡商业开发强度与亲水空间开放性，确保滨水公共空间的公益属性。合理控制商品和服务价格，完善无障碍设施建设，让亮马河真正成为全龄友好、全民共享的城市公共空间。</p>
+      </div>
+      <div class="future-card">
+        <div class="future-num">04</div>
+        <h3>绿色运营与可持续发展</h3>
+        <p>优化夜间照明节能与光污染控制，推广清洁能源使用。加强水质监测与生态维护，建立长效管理机制。以科技赋能生态文明建设，持续提升亮马河的生态环境品质和国际影响力。</p>
+      </div>
+      <div class="future-card">
+        <div class="future-num">05</div>
+        <h3>安全体系完善</h3>
+        <p>增设河岸救生员值守岗位，加强垂钓者与游泳者的分区管理，消除同一片水域活动的安全隐患。完善亲水步道无障碍坡道设计，确保各类群体都能安全、便捷地享受滨水空间。</p>
+      </div>
+      <div class="future-card">
+        <div class="future-num">06</div>
+        <h3>智慧水岸建设</h3>
+        <p>推进亮马河智慧化管理，引入智能导览、实时客流监测、环境数据公示等数字化手段。打造线上线下融合的滨水体验，让科技为生态文明建设注入新动力，提升水岸管理的精细化水平。</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <p style="font-family:var(--font-heading);font-size:1.2rem;color:var(--color-primary-dark);font-weight:600;">
+        "绿水青山就是金山银山 — 以水为媒，文旅融合"
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>亮马河国际风情水岸</h3>
+      <p>朝阳区生态文明建设示范项目。秉持"人与自然和谐共生"理念，打造集生态、景观、休闲、文化、商业于一体的国际滨水空间。</p>
+    </div>
+    <div class="footer-col">
+      <h4>项目板块</h4>
+      <a href="#ecology">生态环境</a>
+      <a href="#achievements">建设成果</a>
+      <a href="#issues">问题与建议</a>
+      <a href="#future">未来展望</a>
+    </div>
+    <div class="footer-col">
+      <h4>相关链接</h4>
+      <a href="http://www.bjchy.gov.cn/" target="_blank" rel="noopener">朝阳区人民政府</a>
+      <a href="https://sthjj.beijing.gov.cn/" target="_blank" rel="noopener">北京市生态环境局</a>
+      <a href="https://s.visitbeijing.com.cn/attraction/120992" target="_blank" rel="noopener">亮马河旅游指南</a>
+    </div>
+    <div class="footer-col">
+      <h4>联系我们</h4>
+      <a href="#">项目反馈</a>
+      <a href="#">媒体联系</a>
+      <a href="#">参观指南</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 朝阳区亮马河国际风情水岸生态文明建设项目. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部">&#x2191;</button>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev">&#x276E;</button>
+  <button class="lightbox-nav next" id="lightboxNext">&#x276F;</button>
+  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
