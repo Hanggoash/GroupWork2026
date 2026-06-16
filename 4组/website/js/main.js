@@ -279,6 +279,13 @@
   // ===== Lightbox =====
   let lightboxImages = [];
   let lightboxIndex = 0;
+  const issueGalleries = {
+    hazards: [
+      { src: 'images/hazards/IMG_20260604_144418.jpg', caption: '安全隐患 — 垂钓者与游泳者同域活动风险' },
+      { src: 'images/hazards/IMG_20260604_145854.jpg', caption: '安全隐患 — 滨水区域安全风险点' },
+      { src: 'images/hazards/IMG_20260604_153116.jpg', caption: '安全隐患 — 需加强警示与巡查区域' }
+    ]
+  };
 
   window.openLightbox = function(src, caption) {
     if (!lightbox || !lightboxImg || !lightboxCaption) return;
@@ -314,6 +321,28 @@
     lightbox.classList.add('active');
     syncBodyScrollLock();
   };
+
+  window.openIssueGallery = function(category) {
+    if (!lightbox || !lightboxImg || !lightboxCaption) return;
+
+    const gallery = issueGalleries[category];
+    if (!gallery || !gallery.length) return;
+
+    lightboxImages = gallery.slice();
+    lightboxIndex = 0;
+    updateLightbox();
+    lightbox.classList.add('active');
+    syncBodyScrollLock();
+  };
+
+  document.querySelectorAll('.issue-card-link[data-lightbox-src]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      openLightbox(
+        this.getAttribute('data-lightbox-src'),
+        this.getAttribute('data-lightbox-caption') || ''
+      );
+    });
+  });
 
   function updateLightbox() {
     const img = lightboxImages[lightboxIndex];
