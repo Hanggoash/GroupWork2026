@@ -21,12 +21,11 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="active">首页</a></li>
-      <li><a href="#about">关于项目</a></li>
+      <li><a href="#about">关于亮马河</a></li>
       <li><a href="#interviews">市民声音</a></li>
       <li><a href="#ecology">生态环境</a></li>
       <li><a href="#achievements">建设成果</a></li>
       <li><a href="#issues">问题与建议</a></li>
-      <li><a href="#future">未来展望</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:8px;">
       <button class="search-btn" id="searchBtn" aria-label="搜索">&#x1f50d;</button>
@@ -153,9 +152,9 @@
 <section class="section about-section" id="about">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-label">关于项目</span>
-      <h2 class="section-title">亮马河国际风情水岸项目</h2>
-      <p class="section-subtitle">从城市背面向城市前厅的华丽转身</p>
+      <span class="section-label">关于亮马河</span>
+      <h2 class="section-title">亮马河国际风情水岸</h2>
+      <p class="section-subtitle">从“臭水沟”向“城市名片”的华丽转身</p>
     </div>
     <div class="about-grid">
       <div class="about-image-wrapper">
@@ -480,32 +479,80 @@
     <!-- Before/After -->
     <h3 style="text-align:center;font-family:var(--font-heading);margin-bottom:32px;color:var(--color-primary-dark);">&#x1f4f8; 同机位今昔对比</h3>
     <div class="before-after-container">
-      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
-        <img src="images/before-after/old1.jpg" alt="治理前亮马河旧貌1" loading="lazy">
-        <div class="ba-overlay">
-          <span class="ba-label before">治理前</span>
-          <div class="ba-title">亮马河历史旧貌之一</div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old1.jpg" alt="治理前亮马河旧貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之一</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new1.jpg" alt="治理后亮马河新貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 生态治理新面貌</div>
+          </div>
         </div>
       </div>
-      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
-        <img src="images/before-after/new1.jpg" alt="治理后亮马河新貌1" loading="lazy">
-        <div class="ba-overlay">
-          <span class="ba-label after">治理后</span>
-          <div class="ba-title">同机位 — 生态治理新面貌</div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old2.jpg" alt="治理前亮马河旧貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之二</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new2.jpg" alt="治理后亮马河新貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 滨水空间焕新</div>
+          </div>
         </div>
       </div>
-      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
-        <img src="images/before-after/old2.jpg" alt="治理前亮马河旧貌2" loading="lazy">
-        <div class="ba-overlay">
-          <span class="ba-label before">治理前</span>
-          <div class="ba-title">亮马河历史旧貌之二</div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old3.jpg" alt="治理前亮马河旧貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之三</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new3.jpg" alt="治理后亮马河新貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 水岸环境提升</div>
+          </div>
         </div>
       </div>
-      <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
-        <img src="images/before-after/new2.jpg" alt="治理后亮马河新貌2" loading="lazy">
-        <div class="ba-overlay">
-          <span class="ba-label after">治理后</span>
-          <div class="ba-title">同机位 — 滨水空间焕新</div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old4.jpg" alt="治理前亮马河旧貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之四</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new4.jpg" alt="治理后亮马河新貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 景观界面更新</div>
+          </div>
         </div>
       </div>
     </div>
@@ -680,54 +727,6 @@
   </div>
 </section>
 
-<!-- ===== FUTURE SECTION ===== -->
-<section class="section future-section" id="future">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">未来展望</span>
-      <h2 class="section-title">持续优化与未来规划</h2>
-      <p class="section-subtitle">在现有成果基础上，进一步提升亮马河国际风情水岸的品质与服务</p>
-    </div>
-    <div class="future-grid">
-      <div class="future-card">
-        <div class="future-num">01</div>
-        <h3>客流疏导与管理优化</h3>
-        <p>关注高峰时段步道与码头客流疏导，优化人流动线设计。在保证开放共享的前提下，合理配置空间资源，提升高峰期市民游客的体验品质，确保滨水空间的安全有序运行。</p>
-      </div>
-      <div class="future-card">
-        <div class="future-num">02</div>
-        <h3>生态科普与宣传教育</h3>
-        <p>加强生态治理历程科普标识建设，增设生态宣传展板，向公众展示亮马河治理的技术路径和生态价值。通过科普教育增强市民的生态文明意识，使亮马河成为户外生态教育课堂。</p>
-      </div>
-      <div class="future-card">
-        <div class="future-num">03</div>
-        <h3>商业与生态平衡发展</h3>
-        <p>平衡商业开发强度与亲水空间开放性，确保滨水公共空间的公益属性。合理控制商品和服务价格，完善无障碍设施建设，让亮马河真正成为全龄友好、全民共享的城市公共空间。</p>
-      </div>
-      <div class="future-card">
-        <div class="future-num">04</div>
-        <h3>绿色运营与可持续发展</h3>
-        <p>优化夜间照明节能与光污染控制，推广清洁能源使用。加强水质监测与生态维护，建立长效管理机制。以科技赋能生态文明建设，持续提升亮马河的生态环境品质和国际影响力。</p>
-      </div>
-      <div class="future-card">
-        <div class="future-num">05</div>
-        <h3>安全体系完善</h3>
-        <p>增设河岸救生员值守岗位，加强垂钓者与游泳者的分区管理，消除同一片水域活动的安全隐患。完善亲水步道无障碍坡道设计，确保各类群体都能安全、便捷地享受滨水空间。</p>
-      </div>
-      <div class="future-card">
-        <div class="future-num">06</div>
-        <h3>智慧水岸建设</h3>
-        <p>推进亮马河智慧化管理，引入智能导览、实时客流监测、环境数据公示等数字化手段。打造线上线下融合的滨水体验，让科技为生态文明建设注入新动力，提升水岸管理的精细化水平。</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:48px;">
-      <p style="font-family:var(--font-heading);font-size:1.2rem;color:var(--color-primary-dark);font-weight:600;">
-        "绿水青山就是金山银山 — 以水为媒，文旅融合"
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
@@ -740,19 +739,12 @@
       <a href="#ecology">生态环境</a>
       <a href="#achievements">建设成果</a>
       <a href="#issues">问题与建议</a>
-      <a href="#future">未来展望</a>
     </div>
     <div class="footer-col">
       <h4>相关链接</h4>
       <a href="http://www.bjchy.gov.cn/" target="_blank" rel="noopener">朝阳区人民政府</a>
       <a href="https://sthjj.beijing.gov.cn/" target="_blank" rel="noopener">北京市生态环境局</a>
       <a href="https://s.visitbeijing.com.cn/attraction/120992" target="_blank" rel="noopener">亮马河旅游指南</a>
-    </div>
-    <div class="footer-col">
-      <h4>联系我们</h4>
-      <a href="#">项目反馈</a>
-      <a href="#">媒体联系</a>
-      <a href="#">参观指南</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -770,6 +762,34 @@
   <button class="lightbox-nav next" id="lightboxNext">&#x276F;</button>
   <img src="" alt="" id="lightboxImg">
   <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="compare-lightbox" id="compareLightbox">
+  <button class="lightbox-close" id="compareLightboxClose">&times;</button>
+  <div class="compare-lightbox-shell">
+    <div class="compare-lightbox-header">
+      <div>
+        <div class="compare-lightbox-title">治理前后原图对比</div>
+      </div>
+    </div>
+    <div class="compare-lightbox-track">
+      <figure class="compare-panel">
+        <figcaption>
+          <span class="compare-panel-label before" id="compareBeforeLabel">治理前</span>
+          <span id="compareBeforeCaption"></span>
+        </figcaption>
+        <img src="" alt="" id="compareBeforeImg">
+      </figure>
+      <div class="compare-lightbox-divider" aria-hidden="true">&#10230;</div>
+      <figure class="compare-panel">
+        <figcaption>
+          <span class="compare-panel-label after" id="compareAfterLabel">治理后</span>
+          <span id="compareAfterCaption"></span>
+        </figcaption>
+        <img src="" alt="" id="compareAfterImg">
+      </figure>
+    </div>
+  </div>
 </div>
 
 <script src="js/main.js"></script>

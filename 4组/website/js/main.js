@@ -19,9 +19,24 @@
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxPrev = document.getElementById('lightboxPrev');
   const lightboxNext = document.getElementById('lightboxNext');
+  const compareLightbox = document.getElementById('compareLightbox');
+  const compareLightboxClose = document.getElementById('compareLightboxClose');
+  const compareBeforeImg = document.getElementById('compareBeforeImg');
+  const compareAfterImg = document.getElementById('compareAfterImg');
+  const compareBeforeLabel = document.getElementById('compareBeforeLabel');
+  const compareAfterLabel = document.getElementById('compareAfterLabel');
+  const compareBeforeCaption = document.getElementById('compareBeforeCaption');
+  const compareAfterCaption = document.getElementById('compareAfterCaption');
   const ecologyTabs = document.getElementById('ecologyTabs');
   const galleryFilter = document.getElementById('galleryFilter');
   const galleryGrid = document.getElementById('galleryGrid');
+
+  function syncBodyScrollLock() {
+    const navOpen = navLinks.classList.contains('active');
+    const lightboxOpen = lightbox.classList.contains('active');
+    const compareOpen = compareLightbox.classList.contains('active');
+    document.body.style.overflow = (navOpen || lightboxOpen || compareOpen) ? 'hidden' : '';
+  }
 
   // ===== Navbar Scroll Effect =====
   let lastScroll = 0;
@@ -88,7 +103,7 @@
   navToggle.addEventListener('click', function() {
     this.classList.toggle('active');
     navLinks.classList.toggle('active');
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    syncBodyScrollLock();
   });
 
   // Close mobile nav on link click
@@ -96,7 +111,7 @@
     link.addEventListener('click', function() {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
-      document.body.style.overflow = '';
+      syncBodyScrollLock();
     });
   });
 
@@ -296,7 +311,7 @@
 
     updateLightbox();
     lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    syncBodyScrollLock();
   };
 
   function updateLightbox() {
@@ -310,8 +325,8 @@
 
   function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = '';
     lightboxImg.src = '';
+    syncBodyScrollLock();
   }
 
   function prevLightbox() {
@@ -332,7 +347,60 @@
     if (e.target === lightbox) closeLightbox();
   });
 
+  document.querySelectorAll('.ba-transition').forEach(function(button) {
+    button.addEventListener('click', function() {
+      openCompareLightbox(this.closest('.ba-pair'));
+    });
+  });
+
+  function openCompareLightbox(pair) {
+    if (!pair) return;
+
+    const cards = pair.querySelectorAll('.ba-card');
+    if (cards.length < 2) return;
+
+    const beforeCard = cards[0];
+    const afterCard = cards[1];
+    const beforeImg = beforeCard.querySelector('img');
+    const afterImg = afterCard.querySelector('img');
+    const beforeLabel = beforeCard.querySelector('.ba-label');
+    const afterLabel = afterCard.querySelector('.ba-label');
+    const beforeTitle = beforeCard.querySelector('.ba-title');
+    const afterTitle = afterCard.querySelector('.ba-title');
+
+    compareBeforeImg.src = beforeImg.src;
+    compareBeforeImg.alt = beforeImg.alt || beforeTitle.textContent;
+    compareAfterImg.src = afterImg.src;
+    compareAfterImg.alt = afterImg.alt || afterTitle.textContent;
+
+    compareBeforeLabel.textContent = beforeLabel ? beforeLabel.textContent : '治理前';
+    compareAfterLabel.textContent = afterLabel ? afterLabel.textContent : '治理后';
+    compareBeforeCaption.textContent = beforeTitle ? beforeTitle.textContent : '';
+    compareAfterCaption.textContent = afterTitle ? afterTitle.textContent : '';
+
+    compareLightbox.classList.add('active');
+    syncBodyScrollLock();
+  }
+
+  function closeCompareLightbox() {
+    compareLightbox.classList.remove('active');
+    compareBeforeImg.src = '';
+    compareAfterImg.src = '';
+    syncBodyScrollLock();
+  }
+
+  compareLightboxClose.addEventListener('click', closeCompareLightbox);
+
+  compareLightbox.addEventListener('click', function(e) {
+    if (e.target === compareLightbox) closeCompareLightbox();
+  });
+
   document.addEventListener('keydown', function(e) {
+    if (compareLightbox.classList.contains('active')) {
+      if (e.key === 'Escape') closeCompareLightbox();
+      return;
+    }
+
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') prevLightbox();
@@ -356,9 +424,7 @@
     { title: '便民服务', desc: '售卖机矿泉水价格偏高、平价饮水服务不足', href: '#issues' },
     { title: '公共厕所问题', desc: '厕所数量不足、指示牌不明显，每天至少10人询问', href: '#issues' },
     { title: '生态宣传', desc: '生态文明主题展板不明显，治理历程展示不足', href: '#issues' },
-    { title: '未来规划', desc: '客流管理、生态科普、商业平衡、智慧水岸建设等', href: '#future' },
     { title: '安全保障', desc: '安全提示、救生设施、AED急救站等安全管理措施', href: '#achievements' },
-    { title: '无障碍设施', desc: '无障碍坡道、盲道等无障碍通行设施建设', href: '#future' },
     { title: '环卫工作', desc: '垃圾分类、清洁维护等环卫设施保障滨水空间整洁', href: '#achievements' },
     { title: '燕莎码头', desc: '码头服务建筑与标识清晰，具备旅游接待与水上交通功能', href: '#culture' },
     { title: '生态文明', desc: '亮马河践行"人与自然和谐共生"的生态文明理念', href: '#about' },
@@ -386,7 +452,7 @@
   });
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === '/' && !lightbox.classList.contains('active') && document.activeElement === document.body) {
+    if (e.key === '/' && !lightbox.classList.contains('active') && !compareLightbox.classList.contains('active') && document.activeElement === document.body) {
       e.preventDefault();
       searchModal.classList.add('active');
       setTimeout(function() { searchInput.focus(); }, 100);
@@ -441,7 +507,7 @@
   });
 
   // ===== Reveal on Scroll Animation =====
-  const revealElements = document.querySelectorAll('.overview-card, .culture-card, .future-card, .ba-card, .interview-card, .issue-card');
+  const revealElements = document.querySelectorAll('.overview-card, .culture-card, .ba-card, .interview-card, .issue-card');
   
   const revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
@@ -497,7 +563,7 @@
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
-      document.body.style.overflow = '';
+      syncBodyScrollLock();
     }
   });
 
