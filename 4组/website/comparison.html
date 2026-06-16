@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="亮马河生态环境治理观察，记录水面环境、岸边绿化、亲水步道和生态结构等情况">
-  <title>生态环境治理 - 朝阳区亮马河国际风情水岸</title>
+  <meta name="description" content="亮马河治理前后同机位今昔对比，直观展示河岸环境、滨水空间与生态景观的更新变化">
+  <title>今昔对比 - 朝阳区亮马河国际风情水岸</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-page="ecology">
+<body data-page="comparison">
 
 <!-- ===== NAVIGATION ===== -->
 <nav class="navbar" id="navbar">
@@ -46,76 +46,90 @@
   </div>
 </div>
 
-<!-- ===== ECOLOGY SECTION ===== -->
-<section class="section" id="ecology">
+<!-- ===== COMPARISON SECTION ===== -->
+<section class="section achievements-section" id="comparison">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-label">生态环境治理</span>
-      <h2 class="section-title">生态治理与环境保护</h2>
-      <p class="section-subtitle">这一部分主要记录现场能看到的水面、岸线、绿化和亲水空间变化，尽量用照片和观察说明治理后的实际状态。</p>
+      <span class="section-label">今昔对比</span>
+      <h2 class="section-title">亮马河治理前后今昔对比</h2>
+      <p class="section-subtitle">通过四组同机位对照图片，直观呈现亮马河在水岸环境、空间品质和景观面貌上的整体提升</p>
     </div>
 
-    <div class="ecology-tabs" id="ecologyTabs">
-      <button class="ecology-tab active" data-tab="water">水质改善</button>
-      <button class="ecology-tab" data-tab="green">绿化建设</button>
-      <button class="ecology-tab" data-tab="eco">生态修复</button>
-      <button class="ecology-tab" data-tab="bio">生态结构</button>
-    </div>
-
-    <div class="ecology-content active" id="tab-water">
-      <div class="ecology-grid">
-        <div class="ecology-image">
-          <img src="images/scenery/IMG_20260604_154814.jpg" alt="亮马河河水近景 — 水面清洁，水质清澈" loading="lazy" onclick="openLightbox(this.src, '亮马河河水近景 — 水面清洁，水质清澈')">
+    <div class="before-after-container">
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old1.jpg" alt="治理前亮马河旧貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之一</div>
+          </div>
         </div>
-        <div class="ecology-info">
-          <h3>河道水质与水面环境</h3>
-          <p>现场观察时，河水整体较清，水面上没有看到明显成片漂浮垃圾，岸边也没有明显异味。对日常散步和停留来说，水面环境已经比较友好。</p>
-          <p>河道两侧的绿化、步道和周边建筑同时进入视野，亮马河不再只是被围起来的河道，而是成为沿线公共空间的一部分。</p>
-          <p>靠近水面的区域处理得比较平缓，岸边植物和水面之间有过渡，市民可以在步道上比较近距离地观察水岸环境。</p>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="ecology-content" id="tab-green">
-      <div class="ecology-grid">
-        <div class="ecology-image">
-          <img src="images/scenery/IMG_20260604_154757.jpg" alt="亮马河岸边连续绿化带 — 草坪、灌木、树木多层次绿化" loading="lazy" onclick="openLightbox(this.src, '亮马河岸边连续绿化带 — 草坪、灌木、树木多层次绿化')">
-        </div>
-        <div class="ecology-info">
-          <h3>岸边绿化与景观提升</h3>
-          <p>两岸绿化以草坪、灌木和乔木为主，层次比较清楚。调研时看到的绿化带较为连续，裸露地面不多，整体维护情况较好。</p>
-          <p>绿化不是单独摆在河边的景观，而是和步道、座椅、亲水平台一起使用。市民散步、跑步或短暂停留时，能直接感受到岸边绿化带来的遮阴和缓冲作用。</p>
-          
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new1.jpg" alt="治理后亮马河新貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 生态治理新面貌</div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="ecology-content" id="tab-eco">
-      <div class="ecology-grid">
-        <div class="ecology-image">
-          <img src="images/waterside/IMG_20260604_152009.jpg" alt="滨水步道与生态驳岸 — 河道从排水功能向复合生态空间转变" loading="lazy" onclick="openLightbox(this.src, '滨水步道与生态驳岸 — 河道从排水功能向复合生态空间转变')">
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old2.jpg" alt="治理前亮马河旧貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之二</div>
+          </div>
         </div>
-        <div class="ecology-info">
-          <h3>生态修复与空间再造</h3>
-          <p>从步道上看，水体、岸边植物和沿岸建筑之间的层次比较明显。亮马河的功能也不再停留在排水河道上，而是叠加了慢行、休闲和观景功能。</p>
-          <p>部分桥下和贴近水面的步道空间比较开敞，人在其中行走时能明显感到与水面的距离被拉近。这种亲水感，是亮马河更新后比较直观的变化。</p>
-         
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new2.jpg" alt="治理后亮马河新貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 滨水空间焕新</div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="ecology-content" id="tab-bio">
-      <div class="ecology-grid">
-        <div class="ecology-image">
-          <img src="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="岸缘芦苇与柳树 — 水生动植物栖息空间" loading="lazy" onclick="openLightbox(this.src, '岸缘芦苇与柳树密布 — 水生动植物栖息空间')">
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old3.jpg" alt="治理前亮马河旧貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之三</div>
+          </div>
         </div>
-        <div class="ecology-info">
-          <h3>生态“垂直结构”构建</h3>
-          <p>岸边植物类型较多，既有乔木，也有低矮灌木和近水植物。这种多层次植被让河岸看起来不单薄，也为鸟类、昆虫等小动物提供了停留空间。</p>
-          <p>柳树等岸边植被与水面衔接较自然，弱化了硬质河岸的感觉。绿化带不只是装饰，也承担了一部分生态缓冲作用。</p>
-          <p>从现场来看，亮马河的生态结构更接近“水面—岸边植物—步道绿化”的连续关系，而不是简单的水体加硬质岸线。</p>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new3.jpg" alt="治理后亮马河新貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 水岸环境提升</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old4.jpg" alt="治理前亮马河旧貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之四</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new4.jpg" alt="治理后亮马河新貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 景观界面更新</div>
+          </div>
         </div>
       </div>
     </div>

@@ -276,6 +276,64 @@
     });
   }
 
+  // ===== Report Image Preview =====
+  const reportImageRefs = document.querySelectorAll('.report-image-ref[data-preview-src]');
+  if (reportImageRefs.length) {
+    const preview = document.createElement('div');
+    preview.className = 'image-preview-popover';
+    preview.innerHTML = '<img alt=""><div class="image-preview-caption"></div>';
+    document.body.appendChild(preview);
+
+    const previewImg = preview.querySelector('img');
+    const previewCaption = preview.querySelector('.image-preview-caption');
+
+    function positionPreview(x, y) {
+      const margin = 16;
+      const offset = 18;
+      const rect = preview.getBoundingClientRect();
+      let left = x + offset;
+      let top = y + offset;
+
+      if (left + rect.width + margin > window.innerWidth) {
+        left = x - rect.width - offset;
+      }
+      if (top + rect.height + margin > window.innerHeight) {
+        top = y - rect.height - offset;
+      }
+
+      preview.style.left = Math.max(margin, left) + 'px';
+      preview.style.top = Math.max(margin, top) + 'px';
+    }
+
+    function showPreview(target, x, y) {
+      const caption = target.getAttribute('data-preview-caption') || '';
+      previewImg.src = target.getAttribute('data-preview-src');
+      previewImg.alt = caption;
+      previewCaption.textContent = caption;
+      preview.classList.add('active');
+      positionPreview(x, y);
+    }
+
+    function hidePreview() {
+      preview.classList.remove('active');
+    }
+
+    reportImageRefs.forEach(function(ref) {
+      ref.addEventListener('mouseenter', function(e) {
+        showPreview(ref, e.clientX, e.clientY);
+      });
+      ref.addEventListener('mousemove', function(e) {
+        positionPreview(e.clientX, e.clientY);
+      });
+      ref.addEventListener('mouseleave', hidePreview);
+      ref.addEventListener('focus', function() {
+        const rect = ref.getBoundingClientRect();
+        showPreview(ref, rect.left + rect.width / 2, rect.bottom);
+      });
+      ref.addEventListener('blur', hidePreview);
+    });
+  }
+
   // ===== Lightbox =====
   let lightboxImages = [];
   let lightboxIndex = 0;
@@ -444,13 +502,18 @@
   // ===== Search Functionality =====
   const searchData = [
     { title: '关于亮马河', desc: '亮马河国际风情水岸项目背景、目标与建设理念', href: 'about.html#about' },
+    { title: '生态环境治理', desc: '展示亮马河在水质改善、绿化建设、生态修复和生物多样性保护方面的系统性成果', href: 'ecology.html#ecology' },
     { title: '水质改善', desc: '亮马河河道水质清澈，水面洁净无漂浮垃圾，达到亲水标准', href: 'ecology.html#water' },
     { title: '绿化建设', desc: '两岸多层次绿化体系，超过35种植物，绿化覆盖率80%', href: 'ecology.html#green' },
     { title: '生态修复', desc: '生态驳岸建设，河道从排水功能向复合生态空间转变', href: 'ecology.html#eco' },
     { title: '生物多样性', desc: '植被丰富为城市小动物提供栖息空间，人与自然和谐共生', href: 'ecology.html#bio' },
-    { title: '同机位今昔对比', desc: '治理前后对比，直观展示亮马河的华丽蜕变', href: 'achievements.html#achievements' },
+    { title: '同机位今昔对比', desc: '治理前后对比，直观展示亮马河的华丽蜕变', href: 'comparison.html#comparison' },
+    { title: '建设成果', desc: '滨水步道、公共服务、安全保障与生态景观等建设成效展示', href: 'achievements.html#achievements' },
+    { title: '文商旅融合', desc: '调研亮马河周边文旅、商业与城市空间如何融合，生态价值如何形成发展价值', href: 'commerce.html#commerce' },
     { title: '滨水步道', desc: '连续宽敞的慢行空间，满足散步、跑步、骑行等需求', href: 'achievements.html#achievements' },
     { title: '公共服务设施', desc: 'AED急救站、公共座椅、导览标识、无障碍设施等', href: 'achievements.html#achievements' },
+    { title: '夜间经济', desc: '滨水建筑灯光、树灯、水面倒影和户外餐区共同构成夜间消费场景', href: 'commerce.html#gallery' },
+    { title: '亮马河商业带', desc: '亮马桥站、燕莎友谊商城和蓝色港湾共同形成沿河商业消费节点', href: 'commerce.html#mechanism' },
     { title: '问题与建议', desc: '现场观察发现的问题记录与改进建议汇总', href: 'issues.html#issues' },
     { title: '安全隐患', desc: '垂钓者与游泳者同域活动风险、救生值守不足等问题', href: 'issues.html#issues' },
     { title: '无障碍设施', desc: '亲水步道无障碍坡道坡度大、路线不连续等问题', href: 'issues.html#issues' },
@@ -460,9 +523,10 @@
     { title: '生态宣传', desc: '生态文明主题展板不明显，治理历程展示不足', href: 'issues.html#issues' },
     { title: '安全保障', desc: '安全提示、救生设施、AED急救站等安全管理措施', href: 'achievements.html#achievements' },
     { title: '环卫工作', desc: '垃圾分类、清洁维护等环卫设施保障滨水空间整洁', href: 'achievements.html#achievements' },
-    { title: '燕莎码头', desc: '码头服务建筑与标识清晰，具备旅游接待与水上交通功能', href: 'about.html#about' },
+    { title: '燕莎码头', desc: '码头服务建筑与标识清晰，具备旅游接待与水上交通功能', href: 'commerce.html#gallery' },
     { title: '生态文明', desc: '亮马河践行"人与自然和谐共生"的生态文明理念', href: 'about.html#about' },
-    { title: '文商旅融合', desc: '以水为媒，文旅融合 — 生态优势转化为消费场景', href: 'about.html#about' },
+    { title: '水上项目', desc: '游船、皮划艇、脚踏船和家庭休闲船等项目已形成明码标价的水上体验', href: 'commerce.html#gallery' },
+    { title: '品牌传播', desc: '导视系统、夜间地标标识和商圈宣传屏强化“国际风情水岸”区域名片', href: 'commerce.html#mechanism' },
     { title: '采访记录', desc: '周边居民与工作人员的实地采访，不同群体对亮马河的真实感受', href: 'interviews.html#interviews' },
     { title: '青年居民', desc: '刚毕业青年来亮马河散步散心，缓解工作压力', href: 'interviews.html#interviews' },
     { title: '长期居民反馈', desc: '居住40年老大爷和60年老大妈见证亮马河从小河沟变大河的全过程', href: 'interviews.html#interviews' },
