@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="亮马河治理前后对比、公共设施建设与生态景观成果展示">
+  <title>建设成果 - 朝阳区亮马河国际风情水岸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="achievements">
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">&#x1f33f;</span>
+      <span>亮马河国际风情水岸</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" data-nav="home">首页</a></li>
+      <li><a href="about.html" data-nav="about">关于亮马河</a></li>
+      <li><a href="ecology.html" data-nav="ecology">生态环境</a></li>
+      <li><a href="interviews.html" data-nav="interviews">市民声音</a></li>
+      <li><a href="achievements.html" data-nav="achievements">建设成果</a></li>
+      <li><a href="issues.html" data-nav="issues">问题与建议</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="search-btn" id="searchBtn" aria-label="搜索">&#x1f50d;</button>
+      <button class="nav-toggle" id="navToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== SEARCH MODAL ===== -->
+<div class="search-modal" id="searchModal">
+  <div class="search-modal-content">
+    <input type="text" id="searchInput" placeholder="搜索网站内容...">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ===== ACHIEVEMENTS SECTION ===== -->
+<section class="section achievements-section" id="achievements">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">建设成果</span>
+      <h2 class="section-title">亮马河治理前后对比与建设成果</h2>
+      <p class="section-subtitle">通过同机位今昔对比和分区域建设成果展示，直观呈现亮马河的华丽蜕变</p>
+    </div>
+
+    <h3 style="text-align:center;font-family:var(--font-heading);margin-bottom:32px;color:var(--color-primary-dark);">&#x1f4f8; 同机位今昔对比</h3>
+    <div class="before-after-container">
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old1.jpg" alt="治理前亮马河旧貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之一</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new1.jpg" alt="治理后亮马河新貌1" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 生态治理新面貌</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old2.jpg" alt="治理前亮马河旧貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之二</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new2.jpg" alt="治理后亮马河新貌2" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 滨水空间焕新</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old3.jpg" alt="治理前亮马河旧貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之三</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new3.jpg" alt="治理后亮马河新貌3" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 水岸环境提升</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理前 — 亮马河旧貌')">
+          <img src="images/before-after/old4.jpg" alt="治理前亮马河旧貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label before">治理前</span>
+            <div class="ba-title">亮马河历史旧貌之四</div>
+          </div>
+        </div>
+        <button class="ba-transition" type="button" aria-label="查看这一组治理前后对比大图">
+          <span>&#10230;</span>
+        </button>
+        <div class="ba-card" onclick="openLightbox(this.querySelector('img').src, '治理后 — 亮马河新貌')">
+          <img src="images/before-after/new4.jpg" alt="治理后亮马河新貌4" loading="lazy">
+          <div class="ba-overlay">
+            <span class="ba-label after">治理后</span>
+            <div class="ba-title">同机位 — 景观界面更新</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="text-align:center;font-family:var(--font-heading);margin-bottom:24px;color:var(--color-primary-dark);">&#x1f3de; 公共设施建设</h3>
+    <div class="gallery-filter" id="galleryFilter">
+      <button class="gallery-filter-btn active" data-filter="all">全部</button>
+      <button class="gallery-filter-btn" data-filter="waterside">滨水步道</button>
+      <button class="gallery-filter-btn" data-filter="facility">公共设施</button>
+      <button class="gallery-filter-btn" data-filter="safety">安全保障</button>
+      <button class="gallery-filter-btn" data-filter="hazard">安全隐患</button>
+      <button class="gallery-filter-btn" data-filter="accessibility">无障碍设施</button>
+      <button class="gallery-filter-btn" data-filter="sanitation">环卫工作</button>
+      <button class="gallery-filter-btn" data-filter="scenery">生态景观</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-category="waterside">
+        <img src="images/waterside/IMG_20260604_152009.jpg" alt="滨水步道" loading="lazy" data-full="images/waterside/IMG_20260604_152009.jpg">
+        <div class="gallery-caption">滨水步道 — 连续宽敞的慢行空间</div>
+      </div>
+      <div class="gallery-item" data-category="waterside">
+        <img src="images/waterside/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="亲水步道" loading="lazy" data-full="images/waterside/c86cec60-775c-4087-a5c5-2e1668533b86.jpg">
+        <div class="gallery-caption">亲水步道 — 人与自然的亲密接触</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_151950.jpg" alt="公共座椅设施" loading="lazy" data-full="images/facilities/IMG_20260604_151950.jpg">
+        <div class="gallery-caption">公共服务设施 — 市民休憩空间</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_155332.jpg" alt="指示牌与标识系统" loading="lazy" data-full="images/facilities/IMG_20260604_155332.jpg">
+        <div class="gallery-caption">标识导览系统 — 国际风情水岸导视</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_144719.jpg" alt="安全设施" loading="lazy" data-full="images/safety/IMG_20260604_144719.jpg">
+        <div class="gallery-caption">安全设施 — AED急救站与急救指引</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_150226.jpg" alt="安全提示与救生设施" loading="lazy" data-full="images/safety/IMG_20260604_150226.jpg">
+        <div class="gallery-caption">救生设施 — 滨水空间安全管理</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/scenery/IMG_20260604_154814.jpg" alt="亮马河景观" loading="lazy" data-full="images/scenery/IMG_20260604_154814.jpg">
+        <div class="gallery-caption">河道景观 — 水清岸绿景美</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg" alt="水岸景观" loading="lazy" data-full="images/scenery/c86cec60-775c-4087-a5c5-2e1668533b86.jpg">
+        <div class="gallery-caption">水岸景观 — 生态与景观融合</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/IMG_20260604_144729.jpg" alt="垃圾处理设施" loading="lazy" data-full="images/facilities/IMG_20260604_144729.jpg">
+        <div class="gallery-caption">环卫设施 — 保持滨水空间清洁</div>
+      </div>
+      <div class="gallery-item" data-category="scenery">
+        <img src="images/general/IMG_20260604_144154.jpg" alt="亮马河桥梁景观" loading="lazy" data-full="images/general/IMG_20260604_144154.jpg">
+        <div class="gallery-caption">桥梁景观 — 交通与景观的融合</div>
+      </div>
+      <div class="gallery-item" data-category="safety">
+        <img src="images/safety/IMG_20260604_145545.jpg" alt="安全防护设施" loading="lazy" data-full="images/safety/IMG_20260604_145545.jpg">
+        <div class="gallery-caption">安全防护 — 沿河护栏与警示</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/facilities/893d1a5a-107c-49bf-8001-80be85fd7d25.jpg" alt="公共服务设施" loading="lazy" data-full="images/facilities/893d1a5a-107c-49bf-8001-80be85fd7d25.jpg">
+        <div class="gallery-caption">综合服务设施 — 人性化公共空间</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_144418.jpg" alt="安全隐患—亲水区域" loading="lazy" data-full="images/hazards/IMG_20260604_144418.jpg">
+        <div class="gallery-caption">安全隐患 — 垂钓者与游泳者同域活动风险</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_145854.jpg" alt="安全隐患—河道安全" loading="lazy" data-full="images/hazards/IMG_20260604_145854.jpg">
+        <div class="gallery-caption">安全隐患 — 滨水区域安全风险点</div>
+      </div>
+      <div class="gallery-item" data-category="hazard">
+        <img src="images/hazards/IMG_20260604_153116.jpg" alt="安全隐患—安全提醒" loading="lazy" data-full="images/hazards/IMG_20260604_153116.jpg">
+        <div class="gallery-caption">安全隐患 — 需加强警示与巡查区域</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/6bee9304-7bec-4519-8cec-eddd19a7fdcb.jpg" alt="无障碍设施" loading="lazy" data-full="images/accessibility/6bee9304-7bec-4519-8cec-eddd19a7fdcb.jpg">
+        <div class="gallery-caption">无障碍设施 — 坡道与通行入口</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/IMG_20260604_150457.jpg" alt="无障碍坡道" loading="lazy" data-full="images/accessibility/IMG_20260604_150457.jpg">
+        <div class="gallery-caption">无障碍设施 — 亲水步道坡道现状</div>
+      </div>
+      <div class="gallery-item" data-category="accessibility">
+        <img src="images/accessibility/IMG_20260604_152036.jpg" alt="无障碍通行" loading="lazy" data-full="images/accessibility/IMG_20260604_152036.jpg">
+        <div class="gallery-caption">无障碍设施 — 轮椅与婴儿车通行路线</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/76065786-af2a-4c60-883e-49c5294d1c42.jpg" alt="环卫工作" loading="lazy" data-full="images/sanitation/76065786-af2a-4c60-883e-49c5294d1c42.jpg">
+        <div class="gallery-caption">环卫工作 — 河道清洁与垃圾分类</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_144729.jpg" alt="环卫设施" loading="lazy" data-full="images/sanitation/IMG_20260604_144729.jpg">
+        <div class="gallery-caption">环卫工作 — 沿线环卫设施配置</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_145209.jpg" alt="清洁维护" loading="lazy" data-full="images/sanitation/IMG_20260604_145209.jpg">
+        <div class="gallery-caption">环卫工作 — 步道与公共区域清洁</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_153834.jpg" alt="垃圾处理" loading="lazy" data-full="images/sanitation/IMG_20260604_153834.jpg">
+        <div class="gallery-caption">环卫工作 — 垃圾桶设置与维护</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_154139.jpg" alt="环卫清洁" loading="lazy" data-full="images/sanitation/IMG_20260604_154139.jpg">
+        <div class="gallery-caption">环卫工作 — 日常保洁作业</div>
+      </div>
+      <div class="gallery-item" data-category="sanitation">
+        <img src="images/sanitation/IMG_20260604_155937.jpg" alt="环境维护" loading="lazy" data-full="images/sanitation/IMG_20260604_155937.jpg">
+        <div class="gallery-caption">环卫工作 — 滨水空间环境维护</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/pricing/1f3a20b2-8ebf-4f18-a389-f907e43ce4e0.jpg" alt="商品价格" loading="lazy" data-full="images/pricing/1f3a20b2-8ebf-4f18-a389-f907e43ce4e0.jpg">
+        <div class="gallery-caption">便民服务 — 自动售卖机商品价格公示</div>
+      </div>
+      <div class="gallery-item" data-category="facility">
+        <img src="images/pricing/IMG_20260604_144701.jpg" alt="商品价格" loading="lazy" data-full="images/pricing/IMG_20260604_144701.jpg">
+        <div class="gallery-caption">便民服务 — 矿泉水售价5元/瓶，价格偏高</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>亮马河国际风情水岸</h3>
+      <p>朝阳区生态文明建设示范项目。秉持"人与自然和谐共生"理念，打造集生态、景观、休闲、文化、商业于一体的国际滨水空间。</p>
+    </div>
+    <div class="footer-col">
+      <h4>项目板块</h4>
+      <a href="ecology.html">生态环境</a>
+      <a href="achievements.html">建设成果</a>
+      <a href="issues.html">问题与建议</a>
+    </div>
+    <div class="footer-col">
+      <h4>相关链接</h4>
+      <a href="http://www.bjchy.gov.cn/" target="_blank" rel="noopener">朝阳区人民政府</a>
+      <a href="https://sthjj.beijing.gov.cn/" target="_blank" rel="noopener">北京市生态环境局</a>
+      <a href="https://s.visitbeijing.com.cn/attraction/120992" target="_blank" rel="noopener">亮马河旅游指南</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 朝阳区亮马河国际风情水岸生态文明建设项目. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ===== BACK TO TOP ===== -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部">&#x2191;</button>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev">&#x276E;</button>
+  <button class="lightbox-nav next" id="lightboxNext">&#x276F;</button>
+  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div class="compare-lightbox" id="compareLightbox">
+  <button class="lightbox-close" id="compareLightboxClose">&times;</button>
+  <div class="compare-lightbox-shell">
+    <div class="compare-lightbox-header">
+      <div>
+        <div class="compare-lightbox-title">治理前后原图对比</div>
+      </div>
+    </div>
+    <div class="compare-lightbox-track">
+      <figure class="compare-panel">
+        <figcaption>
+          <span class="compare-panel-label before" id="compareBeforeLabel">治理前</span>
+          <span id="compareBeforeCaption"></span>
+        </figcaption>
+        <img src="" alt="" id="compareBeforeImg">
+      </figure>
+      <div class="compare-lightbox-divider" aria-hidden="true">&#10230;</div>
+      <figure class="compare-panel">
+        <figcaption>
+          <span class="compare-panel-label after" id="compareAfterLabel">治理后</span>
+          <span id="compareAfterCaption"></span>
+        </figcaption>
+        <img src="" alt="" id="compareAfterImg">
+      </figure>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

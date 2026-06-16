@@ -30,11 +30,12 @@
   const ecologyTabs = document.getElementById('ecologyTabs');
   const galleryFilter = document.getElementById('galleryFilter');
   const galleryGrid = document.getElementById('galleryGrid');
+  const currentPage = document.body.getAttribute('data-page') || 'home';
 
   function syncBodyScrollLock() {
-    const navOpen = navLinks.classList.contains('active');
-    const lightboxOpen = lightbox.classList.contains('active');
-    const compareOpen = compareLightbox.classList.contains('active');
+    const navOpen = navLinks ? navLinks.classList.contains('active') : false;
+    const lightboxOpen = lightbox ? lightbox.classList.contains('active') : false;
+    const compareOpen = compareLightbox ? compareLightbox.classList.contains('active') : false;
     document.body.style.overflow = (navOpen || lightboxOpen || compareOpen) ? 'hidden' : '';
   }
 
@@ -44,16 +45,16 @@
     const scrollY = window.scrollY;
     
     // Navbar shadow
-    if (scrollY > 50) {
+    if (navbar && scrollY > 50) {
       navbar.classList.add('scrolled');
-    } else {
+    } else if (navbar) {
       navbar.classList.remove('scrolled');
     }
 
     // Back to top visibility
-    if (scrollY > 600) {
+    if (backToTop && scrollY > 600) {
       backToTop.classList.add('visible');
-    } else {
+    } else if (backToTop) {
       backToTop.classList.remove('visible');
     }
 
@@ -64,61 +65,37 @@
   }
 
   function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id], .hero[id]');
-    const links = navLinks.querySelectorAll('a');
-    let current = '';
-
-    sections.forEach(function(section) {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    // Also check stats-bar for overview
-    const overview = document.getElementById('overview');
-    if (overview && window.scrollY >= overview.offsetTop - 100 && window.scrollY < overview.offsetTop + overview.offsetHeight) {
-      current = 'overview';
-    }
-
-    links.forEach(function(link) {
+    if (!navLinks) return;
+    navLinks.querySelectorAll('a[data-nav]').forEach(function(link) {
       link.classList.remove('active');
-      if (link.getAttribute('href') === '#' + current) {
+      if (link.getAttribute('data-nav') === currentPage) {
         link.classList.add('active');
       }
     });
-
-    // Home is special since hero doesn't have section tag
-    if (!current && window.scrollY < 300) {
-      links.forEach(function(link) {
-        if (link.getAttribute('href') === '#home') {
-          link.classList.add('active');
-        }
-      });
-    }
   }
 
   // ===== Mobile Nav Toggle =====
-  navToggle.addEventListener('click', function() {
-    this.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    syncBodyScrollLock();
-  });
-
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      navToggle.classList.remove('active');
-      navLinks.classList.remove('active');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
       syncBodyScrollLock();
     });
-  });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        syncBodyScrollLock();
+      });
+    });
+  }
 
   // ===== Hero Carousel =====
   let currentSlide = 0;
-  const slides = heroCarousel.querySelectorAll('.slide');
-  const dots = carouselDots.querySelectorAll('button');
+  const slides = heroCarousel ? heroCarousel.querySelectorAll('.slide') : [];
+  const dots = carouselDots ? carouselDots.querySelectorAll('button') : [];
   let carouselInterval;
 
   function showSlide(index) {
@@ -143,42 +120,44 @@
     clearInterval(carouselInterval);
   }
 
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
+  if (heroCarousel && carouselDots && slides.length && dots.length) {
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        stopCarousel();
+        showSlide(parseInt(this.getAttribute('data-index')));
+        startCarousel();
+      });
+    });
+
+    // Pause on hover
+    heroCarousel.addEventListener('mouseenter', stopCarousel);
+    heroCarousel.addEventListener('mouseleave', startCarousel);
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    heroCarousel.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
       stopCarousel();
-      showSlide(parseInt(this.getAttribute('data-index')));
+    }, {passive: true});
+
+    heroCarousel.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          showSlide((currentSlide + 1) % slides.length);
+        } else {
+          showSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+      }
       startCarousel();
     });
-  });
 
-  // Pause on hover
-  heroCarousel.addEventListener('mouseenter', stopCarousel);
-  heroCarousel.addEventListener('mouseleave', startCarousel);
-
-  // Touch swipe support
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  heroCarousel.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-    stopCarousel();
-  }, {passive: true});
-
-  heroCarousel.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        showSlide((currentSlide + 1) % slides.length);
-      } else {
-        showSlide((currentSlide - 1 + slides.length) % slides.length);
-      }
+    if (slides.length > 1) {
+      startCarousel();
     }
-    startCarousel();
-  });
-
-  if (slides.length > 1) {
-    startCarousel();
   }
 
   // ===== Stats Counter Animation =====
@@ -223,26 +202,39 @@
 
   // ===== Ecology Tabs =====
   if (ecologyTabs) {
-    ecologyTabs.addEventListener('click', function(e) {
-      const tab = e.target.closest('.ecology-tab');
-      if (!tab) return;
+    function activateEcologyTab(tabName, syncHash) {
+      const nextTab = ecologyTabs.querySelector('.ecology-tab[data-tab="' + tabName + '"]');
+      if (!nextTab) return;
 
-      // Update active tab
       ecologyTabs.querySelectorAll('.ecology-tab').forEach(function(t) {
         t.classList.remove('active');
       });
-      tab.classList.add('active');
+      nextTab.classList.add('active');
 
-      // Show content
-      const tabName = tab.getAttribute('data-tab');
       document.querySelectorAll('.ecology-content').forEach(function(content) {
         content.classList.remove('active');
       });
+
       const targetContent = document.getElementById('tab-' + tabName);
       if (targetContent) {
         targetContent.classList.add('active');
       }
+
+      if (syncHash) {
+        history.replaceState(null, '', '#' + tabName);
+      }
+    }
+
+    ecologyTabs.addEventListener('click', function(e) {
+      const tab = e.target.closest('.ecology-tab');
+      if (!tab) return;
+      activateEcologyTab(tab.getAttribute('data-tab'), true);
     });
+
+    const initialTab = (window.location.hash || '').replace('#', '');
+    if (initialTab) {
+      activateEcologyTab(initialTab, false);
+    }
   }
 
   // ===== Gallery Filter =====
@@ -289,7 +281,9 @@
   let lightboxIndex = 0;
 
   window.openLightbox = function(src, caption) {
-    lightboxImages = Array.from(document.querySelectorAll('.ba-card img, .ecology-gallery img[onclick], .gallery-item img[data-full]'))
+    if (!lightbox || !lightboxImg || !lightboxCaption) return;
+
+    lightboxImages = Array.from(document.querySelectorAll('.ba-card img, .ecology-image img[onclick], .gallery-item img[data-full]'))
       .map(function(img) {
         return {
           src: img.getAttribute('data-full') || img.src,
@@ -306,8 +300,15 @@
       return index === self.findIndex(function(t) { return t.src === item.src; });
     });
 
+    if (!lightboxImages.length) {
+      lightboxImages = [{ src: src, caption: caption || '' }];
+    }
+
     lightboxIndex = lightboxImages.findIndex(function(item) { return item.src === src; });
-    if (lightboxIndex === -1) lightboxIndex = 0;
+    if (lightboxIndex === -1) {
+      lightboxImages.unshift({ src: src, caption: caption || '' });
+      lightboxIndex = 0;
+    }
 
     updateLightbox();
     lightbox.classList.add('active');
@@ -339,13 +340,15 @@
     updateLightbox();
   }
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightboxPrev.addEventListener('click', prevLightbox);
-  lightboxNext.addEventListener('click', nextLightbox);
+  if (lightbox && lightboxClose && lightboxPrev && lightboxNext) {
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevLightbox);
+    lightboxNext.addEventListener('click', nextLightbox);
 
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
 
   document.querySelectorAll('.ba-transition').forEach(function(button) {
     button.addEventListener('click', function() {
@@ -389,19 +392,21 @@
     syncBodyScrollLock();
   }
 
-  compareLightboxClose.addEventListener('click', closeCompareLightbox);
+  if (compareLightbox && compareLightboxClose) {
+    compareLightboxClose.addEventListener('click', closeCompareLightbox);
 
-  compareLightbox.addEventListener('click', function(e) {
-    if (e.target === compareLightbox) closeCompareLightbox();
-  });
+    compareLightbox.addEventListener('click', function(e) {
+      if (e.target === compareLightbox) closeCompareLightbox();
+    });
+  }
 
   document.addEventListener('keydown', function(e) {
-    if (compareLightbox.classList.contains('active')) {
+    if (compareLightbox && compareLightbox.classList.contains('active')) {
       if (e.key === 'Escape') closeCompareLightbox();
       return;
     }
 
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox || !lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowLeft') prevLightbox();
     if (e.key === 'ArrowRight') nextLightbox();
@@ -409,91 +414,100 @@
 
   // ===== Search Functionality =====
   const searchData = [
-    { title: '关于项目', desc: '亮马河国际风情水岸项目背景、目标与建设理念', href: '#about' },
-    { title: '水质改善', desc: '亮马河河道水质清澈，水面洁净无漂浮垃圾，达到亲水标准', href: '#ecology' },
-    { title: '绿化建设', desc: '两岸多层次绿化体系，超过35种植物，绿化覆盖率80%', href: '#ecology' },
-    { title: '生态修复', desc: '生态驳岸建设，河道从排水功能向复合生态空间转变', href: '#ecology' },
-    { title: '生物多样性', desc: '植被丰富为城市小动物提供栖息空间，人与自然和谐共生', href: '#ecology' },
-    { title: '同机位今昔对比', desc: '治理前后对比，直观展示亮马河的华丽蜕变', href: '#achievements' },
-    { title: '滨水步道', desc: '连续宽敞的慢行空间，满足散步、跑步、骑行等需求', href: '#achievements' },
-    { title: '公共服务设施', desc: 'AED急救站、公共座椅、导览标识、无障碍设施等', href: '#achievements' },
-    { title: '问题与建议', desc: '现场观察发现的问题记录与改进建议汇总', href: '#issues' },
-    { title: '安全隐患', desc: '垂钓者与游泳者同域活动风险、救生值守不足等问题', href: '#issues' },
-    { title: '无障碍设施', desc: '亲水步道无障碍坡道坡度大、路线不连续等问题', href: '#issues' },
-    { title: '环卫工作', desc: '环卫设施维护、垃圾分类与日常保洁', href: '#issues' },
-    { title: '便民服务', desc: '售卖机矿泉水价格偏高、平价饮水服务不足', href: '#issues' },
-    { title: '公共厕所问题', desc: '厕所数量不足、指示牌不明显，每天至少10人询问', href: '#issues' },
-    { title: '生态宣传', desc: '生态文明主题展板不明显，治理历程展示不足', href: '#issues' },
-    { title: '安全保障', desc: '安全提示、救生设施、AED急救站等安全管理措施', href: '#achievements' },
-    { title: '环卫工作', desc: '垃圾分类、清洁维护等环卫设施保障滨水空间整洁', href: '#achievements' },
-    { title: '燕莎码头', desc: '码头服务建筑与标识清晰，具备旅游接待与水上交通功能', href: '#culture' },
-    { title: '生态文明', desc: '亮马河践行"人与自然和谐共生"的生态文明理念', href: '#about' },
-    { title: '文商旅融合', desc: '以水为媒，文旅融合 — 生态优势转化为消费场景', href: '#culture' },
-    { title: '采访记录', desc: '周边居民与工作人员的实地采访，不同群体对亮马河的真实感受', href: '#interviews' },
-    { title: '青年居民', desc: '刚毕业青年来亮马河散步散心，缓解工作压力', href: '#interviews' },
-    { title: '长期居民反馈', desc: '居住40年老大爷和60年老大妈见证亮马河从小河沟变大河的全过程', href: '#interviews' },
-    { title: '公共服务设施', desc: '多位受访者反映公共厕所不足、导览标识不清晰等问题', href: '#interviews' },
-    { title: '一线工作人员', desc: '每天至少10人询问厕所位置，公共服务配套需要优化', href: '#interviews' },
-    { title: '水上项目体验', desc: '划船教练认为亮马河从能看到能体验的转变是最大亮点', href: '#interviews' },
-    { title: '城市客厅', desc: '亮马河成为全龄友好的市民共享公共空间', href: '#about' }
+    { title: '关于亮马河', desc: '亮马河国际风情水岸项目背景、目标与建设理念', href: 'about.html#about' },
+    { title: '水质改善', desc: '亮马河河道水质清澈，水面洁净无漂浮垃圾，达到亲水标准', href: 'ecology.html#water' },
+    { title: '绿化建设', desc: '两岸多层次绿化体系，超过35种植物，绿化覆盖率80%', href: 'ecology.html#green' },
+    { title: '生态修复', desc: '生态驳岸建设，河道从排水功能向复合生态空间转变', href: 'ecology.html#eco' },
+    { title: '生物多样性', desc: '植被丰富为城市小动物提供栖息空间，人与自然和谐共生', href: 'ecology.html#bio' },
+    { title: '同机位今昔对比', desc: '治理前后对比，直观展示亮马河的华丽蜕变', href: 'achievements.html#achievements' },
+    { title: '滨水步道', desc: '连续宽敞的慢行空间，满足散步、跑步、骑行等需求', href: 'achievements.html#achievements' },
+    { title: '公共服务设施', desc: 'AED急救站、公共座椅、导览标识、无障碍设施等', href: 'achievements.html#achievements' },
+    { title: '问题与建议', desc: '现场观察发现的问题记录与改进建议汇总', href: 'issues.html#issues' },
+    { title: '安全隐患', desc: '垂钓者与游泳者同域活动风险、救生值守不足等问题', href: 'issues.html#issues' },
+    { title: '无障碍设施', desc: '亲水步道无障碍坡道坡度大、路线不连续等问题', href: 'issues.html#issues' },
+    { title: '环卫工作', desc: '环卫设施维护、垃圾分类与日常保洁', href: 'issues.html#issues' },
+    { title: '便民服务', desc: '售卖机矿泉水价格偏高、平价饮水服务不足', href: 'issues.html#issues' },
+    { title: '公共厕所问题', desc: '厕所数量不足、指示牌不明显，每天至少10人询问', href: 'issues.html#issues' },
+    { title: '生态宣传', desc: '生态文明主题展板不明显，治理历程展示不足', href: 'issues.html#issues' },
+    { title: '安全保障', desc: '安全提示、救生设施、AED急救站等安全管理措施', href: 'achievements.html#achievements' },
+    { title: '环卫工作', desc: '垃圾分类、清洁维护等环卫设施保障滨水空间整洁', href: 'achievements.html#achievements' },
+    { title: '燕莎码头', desc: '码头服务建筑与标识清晰，具备旅游接待与水上交通功能', href: 'about.html#about' },
+    { title: '生态文明', desc: '亮马河践行"人与自然和谐共生"的生态文明理念', href: 'about.html#about' },
+    { title: '文商旅融合', desc: '以水为媒，文旅融合 — 生态优势转化为消费场景', href: 'about.html#about' },
+    { title: '采访记录', desc: '周边居民与工作人员的实地采访，不同群体对亮马河的真实感受', href: 'interviews.html#interviews' },
+    { title: '青年居民', desc: '刚毕业青年来亮马河散步散心，缓解工作压力', href: 'interviews.html#interviews' },
+    { title: '长期居民反馈', desc: '居住40年老大爷和60年老大妈见证亮马河从小河沟变大河的全过程', href: 'interviews.html#interviews' },
+    { title: '公共服务设施', desc: '多位受访者反映公共厕所不足、导览标识不清晰等问题', href: 'interviews.html#interviews' },
+    { title: '一线工作人员', desc: '每天至少10人询问厕所位置，公共服务配套需要优化', href: 'interviews.html#interviews' },
+    { title: '水上项目体验', desc: '划船教练认为亮马河从能看到能体验的转变是最大亮点', href: 'interviews.html#interviews' },
+    { title: '城市客厅', desc: '亮马河成为全龄友好的市民共享公共空间', href: 'about.html#about' }
   ];
 
-  searchBtn.addEventListener('click', function() {
-    searchModal.classList.add('active');
-    setTimeout(function() { searchInput.focus(); }, 100);
-  });
+  if (searchBtn && searchModal && searchInput && searchResults) {
+    searchBtn.addEventListener('click', function() {
+      searchModal.classList.add('active');
+      setTimeout(function() { searchInput.focus(); }, 100);
+    });
 
-  searchModal.addEventListener('click', function(e) {
-    if (e.target === searchModal) {
-      searchModal.classList.remove('active');
-      searchInput.value = '';
-      searchResults.innerHTML = '';
-    }
-  });
+    searchModal.addEventListener('click', function(e) {
+      if (e.target === searchModal) {
+        searchModal.classList.remove('active');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+      }
+    });
+  }
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === '/' && !lightbox.classList.contains('active') && !compareLightbox.classList.contains('active') && document.activeElement === document.body) {
+    const lightboxOpen = lightbox ? lightbox.classList.contains('active') : false;
+    const compareLightboxOpen = compareLightbox ? compareLightbox.classList.contains('active') : false;
+
+    if (searchModal && searchInput && searchResults && e.key === '/' && !lightboxOpen && !compareLightboxOpen && document.activeElement === document.body) {
       e.preventDefault();
       searchModal.classList.add('active');
       setTimeout(function() { searchInput.focus(); }, 100);
     }
-    if (e.key === 'Escape' && searchModal.classList.contains('active')) {
+    if (searchModal && searchInput && searchResults && e.key === 'Escape' && searchModal.classList.contains('active')) {
       searchModal.classList.remove('active');
       searchInput.value = '';
       searchResults.innerHTML = '';
     }
   });
 
-  searchInput.addEventListener('input', function() {
-    const query = this.value.trim().toLowerCase();
-    if (query.length === 0) {
-      searchResults.innerHTML = '';
-      return;
-    }
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function() {
+      const query = this.value.trim().toLowerCase();
+      if (query.length === 0) {
+        searchResults.innerHTML = '';
+        return;
+      }
 
-    const results = searchData.filter(function(item) {
-      return item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+      const results = searchData.filter(function(item) {
+        return item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query);
+      });
+
+      if (results.length === 0) {
+        searchResults.innerHTML = '<p style="text-align:center;color:var(--color-text-light);padding:20px;">未找到相关内容，请尝试其他关键词</p>';
+        return;
+      }
+
+      searchResults.innerHTML = results.map(function(item) {
+        const title = item.title.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<span class="search-highlight">$1</span>');
+        const desc = item.desc.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<span class="search-highlight">$1</span>');
+        return '<a href="' + item.href + '" class="search-result-item" onclick="document.getElementById(\'searchModal\').classList.remove(\'active\');document.getElementById(\'searchInput\').value=\'\';document.getElementById(\'searchResults\').innerHTML=\'\';">' +
+          '<h4>' + title + '</h4>' +
+          '<p>' + desc + '</p>' +
+          '</a>';
+      }).join('');
     });
-
-    if (results.length === 0) {
-      searchResults.innerHTML = '<p style="text-align:center;color:var(--color-text-light);padding:20px;">未找到相关内容，请尝试其他关键词</p>';
-      return;
-    }
-
-    searchResults.innerHTML = results.map(function(item) {
-      const title = item.title.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<span class="search-highlight">$1</span>');
-      const desc = item.desc.replace(new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<span class="search-highlight">$1</span>');
-      return '<a href="' + item.href + '" class="search-result-item" onclick="document.getElementById(\'searchModal\').classList.remove(\'active\');document.getElementById(\'searchInput\').value=\'\';document.getElementById(\'searchResults\').innerHTML=\'\';">' +
-        '<h4>' + title + '</h4>' +
-        '<p>' + desc + '</p>' +
-        '</a>';
-    }).join('');
-  });
+  }
 
   // ===== Back to Top =====
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (backToTop) {
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // ===== Smooth Scroll for all anchor links =====
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -560,7 +574,7 @@
 
   // ===== Keyboard Accessibility =====
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+    if (navLinks && navToggle && e.key === 'Escape' && navLinks.classList.contains('active')) {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
       syncBodyScrollLock();
